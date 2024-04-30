@@ -35,19 +35,19 @@ func main() {
 
 	resp, err := client.CreateDeployment(context.Background(), &fuota.CreateDeploymentRequest{
 		Deployment: &fuota.Deployment{
-			ApplicationId: "d9fde0d5-bcaf-4e42-8d27-417f11628905",
+			ApplicationId: "eaf8aad7-bd1a-440e-90cc-cbf1bf7186b5",
 			Devices: []*fuota.DeploymentDevice{
 				{
-					DevEui:    "090000000000000000",
+					DevEui:    "0080e1150035e17f",
 					McRootKey: mcRootKey.String(),
 				},
 			},
 			MulticastGroupType:                fuota.MulticastGroupType_CLASS_C,
 			MulticastDr:                       5,
-			MulticastFrequency:                868100000,
+			MulticastFrequency:                915200000,
 			MulticastGroupId:                  0,
 			MulticastTimeout:                  6,
-			MulticastRegion:                   fuota.Region_EU868,
+			MulticastRegion:                   fuota.Region_AU915,
 			UnicastTimeout:                    ptypes.DurationProto(60 * time.Second),
 			UnicastAttemptCount:               1,
 			FragmentationFragmentSize:         50,
