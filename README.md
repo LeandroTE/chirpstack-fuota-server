@@ -19,8 +19,15 @@ environment.
 To start a `bash` shell within this environment:
 
 ```
-docker-compose run --rm chirpstack-fuota-server bash
+docker compose run --rm chirpstack-fuota-server bash
 ```
+Additionaly if Fuota server is not in the same server as the chirpstack, it will be need it to expose the container por for that use the following command:
+
+```
+docker compose run --rm --service-ports chirpstack-fuota-server bash
+```
+
+After startup of contatiner build the go project
 
 ```
 # cleanup workspace
@@ -49,6 +56,8 @@ After installing the ChirpStack FUOTA Server, there are a couple of steps to
 take to setup. Example commands:
 
 ### Database setup
+
+**(This is only need for previous versions, the latest version has a startup script which configures the database)**
 
 The ChirpStack FUOTA Server stores the deployment results into a [PostgreSQL](https://www.postgresql.org/)
 database. You must enable the `hstore` extension for this database.
@@ -81,6 +90,12 @@ The ChirpStack FUOTA Server needs a ChirpStack API key in order authenticate
 with the ChirpStack API. You can generate this key within the ChirpStack
 web-interface. This key must be configured in the `chirpstack-fuota-server.toml`
 configuration file.
+
+In the configuration is needed to pass http://, for example if you machinne has the ip 192.168.7.5 the configuration in the integration menu should be:
+
+```
+http://192.168.7.5:8090
+```
 
 ### HTTP integration
 
